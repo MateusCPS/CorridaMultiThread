@@ -26,5 +26,14 @@ public class Main {
 		for(int i = 0; i < nThreads; i++) {
 			cars[i].start();
 		}
+		
+		for(int i = 0; i < nThreads; i++) {
+			try {
+				cars[i].join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }
