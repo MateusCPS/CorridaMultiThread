@@ -14,13 +14,6 @@ public class Main {
 			carro++;
 			cars[i] = new Cars(chegada, carro);
 			
-			if(cars[i].desFinal >= chegada) {
-				try {
-					cars[i].wait();
-				} catch (InterruptedException e) {
-				};
-			}
-			
 		}
 		
 		for(int i = 0; i < nThreads; i++) {

@@ -23,16 +23,17 @@ public class Cars extends Thread{
 	
 	public void run()
 	{
-		for(int i = 1; offSetTotal < chegada; i++) {
+		for(int i = 1; desFinal < chegada; i++) {
 			tempoInicial = System.currentTimeMillis();
 				
 					RandomAccelerator();
 					velFinal = (int) (velFinal + (acel * tempoFinal));
 					
-					desFinal = desFinal + offSet;
 					
 					offSet = (int) (velFinal * tempoFinal);
 					offSetTotal += offSet;
+					
+					desFinal = desFinal + offSet;
 					
 					
 					System.out.println("Carro " + carro + " Andou " + offSet + "m e ja percorreu: " + offSetTotal + "m");
