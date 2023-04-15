@@ -10,6 +10,7 @@ public class Main {
 		
 		Cars cars[] = new Cars[nThreads];
 		
+		
 		for(int i = 0; i < nThreads; i++) {
 			carro++;
 			cars[i] = new Cars(chegada, carro);
@@ -24,7 +25,6 @@ public class Main {
 			try {
 				cars[i].join();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

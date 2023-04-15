@@ -1,9 +1,11 @@
+import java.util.Random;
 
 public class Cars extends Thread{
 	int carro;
-	int velFinal;
-	int desFinal;
+	int velocidade;
+	int distancia;
 	float acel;
+	Random random;
 	long tempoInicial;
 	long tempoFinal;
 	int chegada;
@@ -14,34 +16,41 @@ public class Cars extends Thread{
 	{
 		this.chegada = chegada;
 		this.carro = carro;
+		random = new Random();
 	}
 	
 	public void RandomAccelerator() {
-		this.acel = (float) Math.random() * 10;
+		this.acel = random.nextInt(10) + 1;
 	}
 	
-	
+
 	public void run()
 	{
-		for(int i = 1; desFinal < chegada; i++) {
+		for(int i = 0; distancia < chegada; i++) {
 			tempoInicial = System.currentTimeMillis();
 				
 					RandomAccelerator();
-					velFinal = (int) (velFinal + (acel * tempoFinal));
+					velocidade = (int) (velocidade + (acel * tempoFinal));
 					
 					
-					offSet = (int) (velFinal * tempoFinal);
+					offSet = (int) (velocidade * tempoFinal);
 					offSetTotal += offSet;
 					
-					desFinal = desFinal + offSet;
+					distancia = distancia + offSet;
 					
-					
-					System.out.println("Carro " + carro + " Andou " + offSet + "m e ja percorreu: " + offSetTotal + "m");
+					if(distancia > 0)
+					{
+						System.out.println("Carro " + carro + " Andou " + offSet + "m e ja percorreu: " + offSetTotal + "m");
+					}
 					tempoFinal += System.currentTimeMillis() - tempoInicial;
+					
 					
 					if(offSetTotal >= chegada) {
 						System.out.println("Carro " + carro + " Chegou ao seu destino");
 					}
 			}
 	}
+
+	
+	
 }
